@@ -166,20 +166,22 @@ fit_chien = getFit(asin(X_fit ./ a_ant), Y_fit, y_chienAnt) * 10^6;
 fit_fourier = getFit(asin(X_fit ./ a_ant_fourier), Y_fit, y_fourier) * 10^6;
 
 data_matrix(4+zone_int,1)=valROC_chienAnt;
-data_matrix(4+zone_int,2)=valROC_forbesAnt;
-data_matrix(4+zone_int,3)=valROC_fourierAnt;
-data_matrix(4+zone_int,4)=valROC_elipAnt;
+data_matrix(4+zone_int,1)=valROC_elipAnt;
 
 if zone==3
-    data_matrix(1:end-length(zone_vec),1)= [fit_chien, bendE_chienAnt, smth_chienAnt, varROC_chienAnt]';
-    data_matrix(1:end-length(zone_vec),1)= [fit_forbes, bendE_forbes, smth_forbes, 0]'; % the 0 should be replaced when forbes is fixed
-    data_matrix(1:end-length(zone_vec),1)= [fit_fourier, bendE_fourierAnt, smth_fourierAnt, varROC_fourierAnt]';    
-    data_matrix(1:end-length(zone_vec),4)= [fit_elip, bendE_elipAnt, smth_elipAnt, varROC_elipAnt]';
+    data_matrix(1:end-length(zone_vec))= [fit_chien, bendE_chienAnt, smth_chienAnt, varROC_chienAnt]';
+end
+        
+
+
+data_matrix(4+zone_int)=valROC_elipAnt;
+if zone==3
+   data_matrix(1:end-length(zone_vec))= [fit_elip, bendE_elipAnt, smth_elipAnt, varROC_elipAnt]';
 end
         
 end
 
 end
-
+end
 
 
